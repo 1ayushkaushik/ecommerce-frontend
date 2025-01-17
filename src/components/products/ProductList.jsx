@@ -14,9 +14,12 @@ const ProductList = () => {
   const fetchProducts = async () => {
     try {
       const data = await api.getProducts();
-      setProducts(data);
+      console.log('Fetched products:', data); // Debug log
+      setProducts(Array.isArray(data) ? data : []);
     } catch (error) {
+      console.error('Error fetching products:', error);
       toast.error('Failed to fetch products');
+      setProducts([]);
     } finally {
       setLoading(false);
     }
@@ -24,6 +27,10 @@ const ProductList = () => {
 
   if (loading) {
     return <div className="text-center">Loading...</div>;
+  }
+
+  if (!Array.isArray(products) || products.length === 0) {
+    return <div className="text-center">No products found</div>;
   }
 
   return (
