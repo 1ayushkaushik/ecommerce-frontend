@@ -55,7 +55,7 @@
 //   },
 // };
 
-const API_BASE_URL = 'http://localhost:9000/api/v1';
+const API_BASE_URL = 'http://ec2-13-127-86-229.ap-south-1.compute.amazonaws.com:9000/api/v1';
 
 export const api = {
   // Auth endpoints
